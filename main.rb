@@ -49,29 +49,27 @@ require_relative('my_enumerables')
 # puts
 # p(0..10).my_each_with_index { |x, y| print "#{x}::#{y}\t" }
 
-
 ################################## my_select ###################################
 
-# puts "my_select Output: Array"
-# array = [2,3,4, 40, 20, 20, 9]
-# array_result = array.select {|x| x > 10 }
-# p array_result
-# array_result = array.my_select {|x| x > 10 }
-# p array_result
+puts "my_select Output: Array"
+array = [2,3,4, 40, 20, 20, 9]
+array_result = array.select {|x| x > 10 }
+p array_result
+array_result = array.my_select {|x| x > 10 }
+p array_result
 
+# puts 'my_select Output: Hash'
+# require_relative('my_enumerables')
+# countries_code = {
+#   eritrea: 291,
+#   nigeria: 234,
+#   uganda: 256,
+#   japan: 3,
+#   gb: 2,
+#   usa: 1
+# }
 
-puts "my_select Output: Hash"
-require_relative('my_enumerables')
-countries_code = {
-    eritrea: 291,
-    nigeria: 234,
-    uganda: 256,
-    japan:3,
-    gb: 2,
-    usa:1
-}
-
-result = countries_code.select {|k, v|  k.length <=  5}
+# result = countries_code.select { |k, v| k.length <= 5 }
 # p result
 # result = countries_code.my_select {|k, v|  k.length <=  5}
 # p result
@@ -82,13 +80,11 @@ result = countries_code.select {|k, v|  k.length <=  5}
 #     i+=1
 # end
 
-p countries_code.keys
-p countries_code.values
+# p countries_code.keys
+# p countries_code.values
 
-p result
-p result.keys[0]
-
-
+# p result
+# p result.keys[0]
 
 # puts 'my_select Output: Range'
 # result = (0..10).select { |x| x.even? }
