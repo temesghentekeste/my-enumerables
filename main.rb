@@ -51,15 +51,14 @@ require_relative('my_enumerables')
 
 ################################## my_select ###################################
 
-puts "my_select Output: Array"
-array = [2,3,4, 40, 20, 20, 9]
-array_result = array.select {|x| x > 10 }
-p array_result
-array_result = array.my_select {|x| x > 10 }
-p array_result
+# puts 'my_select Output: Array'
+# array = [2, 3, 4, 40, 20, 20, 9]
+# array_result = array.select { |x| x > 10 }
+# p array_result
+# array_result = array.my_select { |x| x > 10 }
+# p array_result
 
 # puts 'my_select Output: Hash'
-# require_relative('my_enumerables')
 # countries_code = {
 #   eritrea: 291,
 #   nigeria: 234,
@@ -69,9 +68,9 @@ p array_result
 #   usa: 1
 # }
 
-# result = countries_code.select { |k, v| k.length <= 5 }
+# result = countries_code.select { |k, _v| k.length <= 5 }
 # p result
-# result = countries_code.my_select {|k, v|  k.length <=  5}
+# result = countries_code.my_select { |k, _v| k.length <= 5 }
 # p result
 
 # i = 0
@@ -87,7 +86,14 @@ p array_result
 # p result.keys[0]
 
 # puts 'my_select Output: Range'
-# result = (0..10).select { |x| x.even? }
+# result = (0..10).select(&:even?)
 # p result
-# result =  (0..10).my_select { |x| x.even? }
+# result = (0..10).my_select(&:even?)
 # p result
+# p (0..10).select
+# p (0..10).my_select
+# p(0..10).select { |x| x > 10 }
+# p(0..10).my_select { |x| x > 10 }
+
+# p 'temesghen'.select(&:empty?)
+# p "temesghen".my_select {|x| x.length > 0}

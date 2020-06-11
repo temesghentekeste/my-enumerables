@@ -38,19 +38,17 @@ module Enumerable
     return enum_for(:my_select) unless block_given?
 
     result = []
-    hash_result = {}
-    i = 0
-   while i < self.size
-      if is_a?(Array) || is_a?(Range)
-        result << self[i] if yield(self[i])
-      elsif is_a?(Hash)
-        self.my_each do |key, value|
-            hash_result[key] = value if yield(key,value)
-        end
-      end
-      i += 1
+    if is_a?(Array) || is_a?(Range)
+      result = []
+      my_each { |value| result << value if yield(value) }
+    else
+      result = {}
+      my_each { |key, value| result[key] = value if yield(key, value) }
     end
-    return result unless result.empty?
-    return hash_result unless hash_result.empty?
+    result
   end
 end
+
+# elsif is_a?(Hash)
+#   my_each do |key, value|
+#     hash_result[key] = value if yield(key, value)
