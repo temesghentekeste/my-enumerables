@@ -1,4 +1,8 @@
 module Enumerable
+
+  # ---------------------------------------------
+  # MY EACH
+  # ---------------------------------------------
   def my_each
     return enum_for(:my_each) unless block_given?
 
@@ -17,6 +21,9 @@ module Enumerable
     self
   end
 
+  # ---------------------------------------------
+  # MY EACH WITH INDEX
+  # ---------------------------------------------
   def my_each_with_index
     return enum_for(:my_each_with_index) unless block_given?
 
@@ -34,6 +41,9 @@ module Enumerable
     self
   end
 
+  # ---------------------------------------------
+  # MY SELECT
+  # ---------------------------------------------
   def my_select
     return enum_for(:my_select) unless block_given?
 
@@ -47,6 +57,30 @@ module Enumerable
     end
     result
   end
+
+  # ---------------------------------------------
+  # MY ALL
+  # ---------------------------------------------
+
+  def my_all?(*args)
+    if args.empty?
+      if block_given?
+        my_each { |value| return false unless yield(value)}
+      else
+        my_each do |value|
+          return false if value.nil? || value == false
+        end
+      end
+    else
+      if args[0].is_a?(Regexp)
+        my_each {|value| return false unless value.match?(args[0])}
+      elsif args[0].is_a?(Module)
+        my_each { |value| return false unless value.is_a?(args[0]) }
+      end
+    end
+    return true
+  end
+
 end
 
 # elsif is_a?(Hash)

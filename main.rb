@@ -97,3 +97,36 @@ require_relative('my_enumerables')
 
 # p 'temesghen'.select(&:empty?)
 # p "temesghen".my_select {|x| x.length > 0}
+
+# --------------------------------------------------------------------
+# p %w[ant bear cat].all? { |word| word.length >= 3 } #=> true
+# p %w[ant bear cat].my_all? { |word| word.length >= 3 } #=> true
+# p %w[ant bear cat].all? { |word| word.length >= 4 } #=> false
+# p %w[ant bear cat].my_all? { |word| word.length >= 4 } #=> false
+# p %w[ant bear cat].all?(/t/)                        #=> false
+# p %w[ant bear cat].my_all?(/t/)                        #=> false
+# p [1, 2i, 3.14].all?(Numeric)                       #=> true
+# p [1, 2i, 3.14].my_all?(Numeric)                       #=> true
+# p [nil, true, 99].all?                              #=> false
+# p [nil, true, 99].my_all?                              #=> false
+# p "****************"
+# p [30, true, 99].all?                              #=> true
+# p [30, true, 99].my_all?                              #=> true
+# p [].all?                                           #=> true
+# p [].my_all?                                           #=> true
+# p "Using any? method with Hash   *****************"
+# countries_code = {
+#     eritrea: 291,
+#     nigeria: 234,
+#     uganda: 256,
+#     japan: 3,
+#     gb: 2,
+#     usa: 1,
+#     italy: 5
+# }
+# p [:nigeria, :uganda, :eritrea].all?{ |val| countries_code.key?(val) }
+# p [:nigeria, :uganda, :eritrea].my_all?{ |val| countries_code.key?(val) }
+# p [:nigeria, :uganda, :usa].all?{ |val| countries_code.key?(val) }
+# p [:nigeria, :uganda, :usa].my_all?{ |val| countries_code.key?(val) }
+# p [:nigeria, :uganda, :italy].all?{ |val| countries_code.key?(val) }
+# p [:nigeria, :uganda, :italy].my_all?{ |val| countries_code.key?(val) }
