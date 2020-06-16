@@ -61,21 +61,38 @@ module Enumerable
   # MY ALL
   # ---------------------------------------------
 
-  def my_all?(*args)
-    if args.empty?
-      if block_given?
-        my_each { |value| return false unless yield(value) }
-      else
-        my_each do |value|
-          return false if value.nil? || value == false
-        end
-      end
-    elsif args[0].is_a?(Regexp)
-      my_each { |value| return false unless value.match?(args[0]) }
-    else args[0].is_a?(Module)
-      my_each { |value| return false unless value.is_a?(args[0]) }
+  def my_all?(args = nil)
+    if args.nil?
+      my_each { |value| return false unless yield(value) } if block_given?
+      my_each { |value| return false if value.nil? || value == false }
+    else
+      my_each { |value| return false unless value.match?(args) } if args.class == Regexp
+      my_each { |value| return false unless value.is_a?(args) } if args.class == Module
     end
     true
+  end
+
+  # ---------------------------------------------
+  # MY ANY?
+  # ---------------------------------------------
+  def my_any?(*args)
+    if args.empty?
+      if block_given?
+        my_each { |value| return true if yield(value) }
+      else
+        my_each do |value|
+          return true unless value.nil? || value == false
+        end
+      end
+    else
+      if args[0].is_a?(Regexp)
+        my_each { |value| return true if value.match?(args[0]) }
+
+      elsif args[0].is_a?(Module)
+        my_each { |value| return true if value.is_a?(args[0]) }
+      end
+    end
+    false
   end
 end
 
