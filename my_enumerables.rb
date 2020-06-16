@@ -87,16 +87,16 @@ module Enumerable
     else
       if args[0].is_a?(Regexp)
         my_each { |value| return true if value.match?(args[0]) }
-        
+
       elsif args[0].is_a?(Module)
         my_each { |value| return true if value.is_a?(args[0]) }
       end
     end
     false
   end
-  
+
   # ---------------------------------------------
-  # MY ANY?
+  # MY NONE?
   # ---------------------------------------------
   def my_none?(args = nil)
     if args.nil?
@@ -104,12 +104,27 @@ module Enumerable
       my_each { |value| return false if value.nil? || value == false }
       true
     else
-      my_each { |value| return false if value.match?(args) } if args.is_a? (Regexp)
-      my_each { |value| return false if value.is_a?(args) } if args.is_a? (Module)
+      my_each { |value| return false if value.match?(args) } if args.is_a? Regexp
+      my_each { |value| return false if value.is_a?(args) } if args.is_a? Module
       true
     end
   end
 
+  def my_count(num = nil)
+    count = 0
+    if num.nil?
+      if block_given?
+        my_each { |value| count += 1 if yield(value) }
+      else
+        count = size
+      end
+    else
+      my_each do |value|
+        count += 1 if num == value
+      end
+    end
+    count
+end
 end
 
 # elsif is_a?(Hash)
