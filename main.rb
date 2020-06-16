@@ -110,8 +110,8 @@ require_relative('my_enumerables')
 # p [nil, true, 99].all? #=> false
 # p [nil, true, 99].my_all? #=> false
 # p '****************'
-# p [30, true, 99].all? #=> true
-# p [30, true, 99].my_all? #=> true
+# p [nil, true, 99].all? #=> true
+# p [nil, true, 99].my_all? #=> true
 # p [].all? #=> true
 # p [].my_all? #=> true
 # p 'Using any? method with Hash   *****************'
@@ -128,8 +128,8 @@ require_relative('my_enumerables')
 # p %i[nigeria uganda eritrea].my_all? { |val| countries_code.key?(val) }
 # p %i[nigeria uganda usa].all? { |val| countries_code.key?(val) }
 # p %i[nigeria uganda usa].my_all? { |val| countries_code.key?(val) }
-# p %i[nigeria uganda italy].all? { |val| countries_code.key?(val) }
-# p %i[nigeria uganda italy].my_all? { |val| countries_code.key?(val) }
+# p %i[nigeria uganda korea].all? { |val| countries_code.key?(val) }
+# p %i[nigeria uganda china].my_all? { |val| countries_code.key?(val) }
 
 # p 'any?*****************************************************************'
 # p 'Using any? method with Hash   *****************'
@@ -174,3 +174,45 @@ require_relative('my_enumerables')
 # p [nil, false, nil].my_any?                              #=> false
 # p [nil, false, 5].any?                              #=> false
 # p [5, false, nil].my_any?                              #=> false
+
+# p [1, 2i, 3.14].all?(Numeric) #=> true
+# p [1, 2i, 3.14].my_all?(Numeric) #=> true
+# p [nil, true, 99].all? #=> false
+# p [nil, true, 99].my_all? #=> false
+# p '****************'
+# p [nil, true, 99].all? #=> true
+# p [nil, true, 99].my_all? #=> true
+# p [].all? #=> true
+# p [].my_all? #=> true
+# p 'Using any? method with Hash   *****************'
+# countries_code = {
+#   eritrea: 291,
+#   nigeria: 234,
+#   uganda: 256,
+#   japan: 3,
+#   gb: 2,
+#   usa: 1,
+#   italy: 5
+# }
+# p %i[nigeria uganda eritrea].all? { |val| countries_code.key?(val) }
+# p %i[nigeria uganda eritrea].my_all? { |val| countries_code.key?(val) }
+# p %i[nigeria uganda usa].all? { |val| countries_code.key?(val) }
+# p %i[nigeria uganda usa].my_all? { |val| countries_code.key?(val) }
+# p %i[nigeria uganda korea].all? { |val| countries_code.key?(val) }
+# p %i[nigeria uganda china].my_all? { |val| countries_code.key?(val) }
+
+# p %w{ant bear cat}.none? { |word| word.length == 5 } #=> true
+# p %w{ant bear cat}.my_none? { |word| word.length == 5 } #=> true
+# p %w{ant bear cat}.none? { |word| word.length >= 4 } #=> false
+# p %w{ant bear cat}.my_none? { |word| word.length >= 4 } #=> false
+# p %w{ant bear cat}.none?(/d/)                        #=> true
+# p %w{ant bear cat}.my_none?(/d/)                        #=> true
+# p [1, 3.14, 42].none?(Float)                         #=> false
+# p [1, 3.14, 42].my_none?(Float)                         #=> false
+# p [].none?                                           #=> true
+# p [].my_none?                                           #=> true
+# p [nil].none?                                        #=> true
+p [nil, false].none?                                 #=> true
+p [nil, false].my_none?                                 #=> true
+p [false, nil].none?                           #=> false
+p [false, nil].my_none?                           #=> false
