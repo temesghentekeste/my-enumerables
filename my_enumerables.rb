@@ -1,5 +1,4 @@
 module Enumerable
-
   # ---------------------------------------------
   # MY EACH
   # ---------------------------------------------
@@ -65,22 +64,19 @@ module Enumerable
   def my_all?(*args)
     if args.empty?
       if block_given?
-        my_each { |value| return false unless yield(value)}
+        my_each { |value| return false unless yield(value) }
       else
         my_each do |value|
           return false if value.nil? || value == false
         end
       end
-    else
-      if args[0].is_a?(Regexp)
-        my_each {|value| return false unless value.match?(args[0])}
-      elsif args[0].is_a?(Module)
-        my_each { |value| return false unless value.is_a?(args[0]) }
-      end
+    elsif args[0].is_a?(Regexp)
+      my_each { |value| return false unless value.match?(args[0]) }
+    else args[0].is_a?(Module)
+      my_each { |value| return false unless value.is_a?(args[0]) }
     end
-    return true
+    true
   end
-
 end
 
 # elsif is_a?(Hash)
