@@ -253,23 +253,22 @@ require_relative('my_enumerables')
 # result = countries_code.my_count { |_k, v| v > 100 }
 # p result
 
-
-puts "**********************my_map: Print Output ******************"
+puts '**********************my_map: Print Output ******************'
 # (0..10).map {|x| p x**3}
 # (0..10).my_map {|x| p x**3}
 # p (1..4).map {"cat"}
 # p (1..4).my_map {"cat"}
 
-p "Map with Hash"
+p 'Map with Hash'
 burgers = {
-    "Big Mac" => 300, 
-    "Whopper with cheese" => 450, 
-    "Wendy's Double with cheese" => 320
+  'Big Mac' => 300,
+  'Whopper with cheese' => 450,
+  "Wendy's Double with cheese" => 320
 }
 
 p burgers.map
 p burgers.my_map
 
-hash = { :a => 1, :b => 2, :c => 3 }
-p result = hash.map {|k,v| v*10 } 
-p result = hash.my_map {|k,v| v*10 }
+hash = { a: 1, b: 2, c: 3 }
+p result = hash.map { |_k, v| v * 10 }
+p result = hash.my_map { |_k, v| v * 10 }
