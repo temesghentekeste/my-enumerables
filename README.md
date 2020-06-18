@@ -55,7 +55,7 @@ This project consist of different ruby enumerable methods that emulate Ruby's in
 👤 **Elijah Ayandokun**
 
 - Github: [@elijahtobs](https://github.com/ElijahTobs)
-- Twitter: [@elijahgr8](https://twitter.com/Elijahgr8)
+- Twitter: [@elijahtobs](https://twitter.com/ElijahTobs)
 - Linkedin: [ayandokunelijah](https://linkedin.com/in/ayandokunelijah)
 
 👤 **Temesghen Tekeste**
