@@ -3,7 +3,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "main.rb"
-    - "./my_enumerables.rb"
+    - "my_enumerables.rb"
     
   DisplayCopNames: true
 Layout/LineLength:
