@@ -253,7 +253,7 @@ require_relative('my_enumerables')
 # result = countries_code.my_count { |_k, v| v > 100 }
 # p result
 
-puts '**********************my_map: Print Output ******************'
+# puts '**********************my_map: Print Output ******************'
 # (0..10).map {|x| p x**3}
 # (0..10).my_map {|x| p x**3}
 # p (1..4).map {"cat"}
@@ -273,4 +273,4 @@ puts '**********************my_map: Print Output ******************'
 # p result = hash.map { |_k, v| v * 10 }
 # p result = hash.my_map { |_k, v| v * 10 }
 
-p multiply_els([2,4,5]) #=> 40
+# p multiply_els([2,4,5]) #=> 40

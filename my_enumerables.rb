@@ -163,7 +163,6 @@ module Enumerable
     end
     acc
   end
-
 end
 
 # ---------------------------------------------
@@ -174,7 +173,3 @@ def multiply_els(arr)
   arr.my_inject(:*)
 end
 
-
-# elsif is_a?(Hash)
-#   my_each do |key, value|
-#     hash_result[key] = value if yield(key, value)
