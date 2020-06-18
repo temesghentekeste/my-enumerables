@@ -1,4 +1,4 @@
-# Custom Enumerable Methods
+# Ruby Custom Enumerable Methods
   
 [![View Code](https://img.shields.io/badge/View%20-Code-green)](https://github.com/ElijahTobs/My_Enumerbles/tree/my-enumberables-dev)
 [![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/ElijahTobs/My_Enumerbles/issues)
