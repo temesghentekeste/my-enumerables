@@ -217,38 +217,59 @@ require_relative('my_enumerables')
 # p [false, nil].none?                           #=> false
 # p [false, nil].my_none?                           #=> false
 
-p 'count ********************************************************'
-result = [1, 2, 3, 4].count
-p result
-result = [1, 2, 3, 4].my_count
-p result
+# p 'count ********************************************************'
+# result = [1, 2, 3, 4].count
+# p result
+# result = [1, 2, 3, 4].my_count
+# p result
 
-result = (0..10).count(&:even?)
-p result
-result = (0..10).my_count(&:even?)
-p result
+# result = (0..10).count(&:even?)
+# p result
+# result = (0..10).my_count(&:even?)
+# p result
 
-result = [2, 3, 5, 4, 5, 5, 5, 6, 7, 8].count(5)
-p result
+# result = [2, 3, 5, 4, 5, 5, 5, 6, 7, 8].count(5)
+# p result
 
-result = [2, 3, 5, 4, 5, 5, 5, 6, 7, 8].my_count(5)
-p result
+# result = [2, 3, 5, 4, 5, 5, 5, 6, 7, 8].my_count(5)
+# p result
 
-p 'Using count method with Hash   *****************'
-p 'Using count method with Hash   *****************'
-countries_code = {
-  eritrea: 291,
-  nigeria: 234,
-  uganda: 256,
-  tanzania: 200,
-  china: 201,
-  japan: 3,
-  gb: 2,
-  usa: 1
+# p 'Using count method with Hash   *****************'
+# p 'Using count method with Hash   *****************'
+# countries_code = {
+#   eritrea: 291,
+#   nigeria: 234,
+#   uganda: 256,
+#   tanzania: 200,
+#   china: 201,
+#   japan: 3,
+#   gb: 2,
+#   usa: 1
+# }
+
+# result = countries_code.count { |_k, v| v > 100 }
+# p result
+
+# result = countries_code.my_count { |_k, v| v > 100 }
+# p result
+
+
+puts "**********************my_map: Print Output ******************"
+# (0..10).map {|x| p x**3}
+# (0..10).my_map {|x| p x**3}
+# p (1..4).map {"cat"}
+# p (1..4).my_map {"cat"}
+
+p "Map with Hash"
+burgers = {
+    "Big Mac" => 300, 
+    "Whopper with cheese" => 450, 
+    "Wendy's Double with cheese" => 320
 }
 
-result = countries_code.count { |_k, v| v > 100 }
-p result
+p burgers.map
+p burgers.my_map
 
-result = countries_code.my_count { |_k, v| v > 100 }
-p result
+hash = { :a => 1, :b => 2, :c => 3 }
+p result = hash.map {|k,v| v*10 } 
+p result = hash.my_map {|k,v| v*10 }
