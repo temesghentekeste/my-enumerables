@@ -166,7 +166,13 @@ module Enumerable
 
 end
 
+# ---------------------------------------------
+# MULTIPLY_ELS METHOD
+# ---------------------------------------------
 
+def multiply_els(arr)
+  arr.my_inject(:*)
+end
 
 
 # elsif is_a?(Hash)
