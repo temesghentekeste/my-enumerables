@@ -3,8 +3,12 @@ require_relative('my_enumerables')
 ################################## my_each ###################################
 # puts "my_each Output: Array"
 # array = [2,3,4]
-# p array.each {|x| print "#{x}\t"}
+# # p array.each {|x| print "#{x}\t"}
 # p array.my_each {|x| print "#{x}\t"}
+# iterator = array.each
+# p iterator
+# p iterator.next
+# p iterator.next
 
 # puts "my_each Output: Hash"
 # require_relative('my_enumerables')
@@ -24,9 +28,9 @@ require_relative('my_enumerables')
 ################################## my_each_with_index ###################################
 
 # puts "my_each_with_index Output: Array"
-# array = [2,3,4]
-# p array.each_with_index {|x, y| print "#{x}::#{y}\t"}
-# p array.my_each_with_index {|x, y| print "#{x}::#{y}\t"}
+# # array = [2,3,4]
+# # p array.each_with_index {|x, y| print "#{x}::#{y}\t"}
+# # p array.my_each_with_index {|x, y| print "#{x}::#{y}\t"}
 
 # puts "my_each_with_index Output: Hash"
 # require_relative('my_enumerables')
@@ -68,9 +72,9 @@ require_relative('my_enumerables')
 #   usa: 1
 # }
 
-# result = countries_code.select { |k, _v| k.length <= 5 }
+# result = countries_code.select { |k, v| k.length <= 5 }
 # p result
-# result = countries_code.my_select { |k, _v| k.length <= 5 }
+# result = countries_code.my_select { |k, v| k.length <= 5 }
 # p result
 
 # i = 0
@@ -86,7 +90,7 @@ require_relative('my_enumerables')
 # p result.keys[0]
 
 # puts 'my_select Output: Range'
-# result = (0..10).select(&:even?)
+# result = (0..10).select {|x| x.even?}
 # p result
 # result = (0..10).my_select(&:even?)
 # p result
@@ -103,15 +107,16 @@ require_relative('my_enumerables')
 # p %w[ant bear cat].my_all? { |word| word.length >= 3 } #=> true
 # p %w[ant bear cat].all? { |word| word.length >= 4 } #=> false
 # p %w[ant bear cat].my_all? { |word| word.length >= 4 } #=> false
-# p %w[ant bear cat].all?(/t/) #=> false
-# p %w[ant bear cat].my_all?(/t/) #=> false
-# p [1, 2i, 3.14].all?(Numeric) #=> true
-# p [1, 2i, 3.14].my_all?(Numeric) #=> true
+# p %w[ant bear cat].all?(/a/) #=> false
+# p %w[ant bear cat].my_all?(/a/) #=> false
+# "**********************************************************************************************************"
+# p [1, 2i, 3.14, "cat"].all?(Numeric) #=> true
+# p [1, 2i, 3.14, "cat"].my_all?(Numeric) #=> true
 # p [nil, true, 99].all? #=> false
 # p [nil, true, 99].my_all? #=> false
-# p '****************'
-# p [nil, true, 99].all? #=> true
-# p [nil, true, 99].my_all? #=> true
+# # p '****************'
+# p [100, true, 99].all? #=> true
+# p [100, true, 99].my_all? #=> true
 # p [].all? #=> true
 # p [].my_all? #=> true
 # p 'Using any? method with Hash   *****************'
@@ -175,8 +180,8 @@ require_relative('my_enumerables')
 # p [nil, false, 5].any?                              #=> false
 # p [5, false, nil].my_any?                              #=> false
 
-# p [1, 2i, 3.14].all?(Numeric) #=> true
-# p [1, 2i, 3.14].my_all?(Numeric) #=> true
+# p [1, 2i, 3.14, "one"].all?(Numeric) #=> true
+# p [1, 2i, 3.14, "one"].my_all?(Numeric) #=> true
 # p [nil, true, 99].all? #=> false
 # p [nil, true, 99].my_all? #=> false
 # p '****************'
@@ -212,10 +217,11 @@ require_relative('my_enumerables')
 # p [].none?                                           #=> true
 # p [].my_none?                                           #=> true
 # p [nil].none?                                        #=> true
+# p [nil].my_none?                                        #=> true
 # p [nil, false].none?                                 #=> true
 # p [nil, false].my_none?                                 #=> true
-# p [false, nil].none?                           #=> false
-# p [false, nil].my_none?                           #=> false
+# p [false, nil, 10].none?                            #=> false
+# p [false, nil, 10].my_none?                           #=> false
 
 # p 'count ********************************************************'
 # result = [1, 2, 3, 4].count
@@ -254,8 +260,13 @@ require_relative('my_enumerables')
 # p result
 
 # puts '**********************my_map: Print Output ******************'
-# (0..10).map {|x| p x**3}
+# result = (0..10).map {|x|  x**3}
+# p result
+# result = (0..10).my_map {|x|  x**3}
+# p result
 # (0..10).my_map {|x| p x**3}
+# p "*****************8"
+# (0..10).map {|x| p x**3}
 # p (1..4).map {"cat"}
 # p (1..4).my_map {"cat"}
 
@@ -274,3 +285,15 @@ require_relative('my_enumerables')
 # p result = hash.my_map { |_k, v| v * 10 }
 
 # p multiply_els([2,4,5]) #=> 40
+
+# puts "My Inject"
+# p [3, 6, 10, 13].inject(:+) #(((3 + 6) + 10) + 13) => 32
+# p [3, 6, 10, 13].my_inject(:+) #(((3 + 6) + 10) + 13) => 32
+# p [3, 6, 10].inject {|sum, number| sum + number} #=>|3, 6| 3 + 6 => 9
+#                                                #=>|9, 10| 9 + 10 =>19
+#  p [3, 6, 10].my_inject {|sum, number| sum + number}
+
+#  p [3, 6, 10, 13].inject(0, :+) #=> 32
+#  p [3, 6, 10, 13].my_inject(0, :+) #=> 32
+#  p [3, 6, 10].inject(0) {|sum, number| sum + number} #=> 19
+#  p [3, 6, 10].my_inject(0) {|sum, number| sum + number} #=> 19

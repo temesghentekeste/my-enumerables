@@ -48,7 +48,6 @@ module Enumerable
 
     result = []
     if is_a?(Array) || is_a?(Range)
-      result = []
       my_each { |value| result << value if yield(value) }
     else
       result = {}
@@ -67,7 +66,7 @@ module Enumerable
       my_each { |value| return false if value.nil? || value == false }
     else
       my_each { |value| return false unless value.match?(args) } if args.class == Regexp
-      my_each { |value| return false unless value.is_a?(args) } if args.class == Module
+      my_each { |value| return false if !value.is_a?(args) } if args.class == Class
     end
     true
   end
@@ -101,7 +100,7 @@ module Enumerable
   def my_none?(args = nil)
     if args.nil?
       my_each { |value| return false if yield(value) } if block_given?
-      my_each { |value| return false if value.nil? || value == false }
+      my_each { |value| return false unless value.nil? || value == false }
       true
     else
       my_each { |value| return false if value.match?(args) } if args.is_a? Regexp
