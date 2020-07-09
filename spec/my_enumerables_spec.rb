@@ -127,4 +127,16 @@ describe Enumerable do
       expect(country_codes_hash.my_map { |_k, v| v += 1 }).to eql(new_country_codes_array)
     end
   end
+
+  context '#my_inject' do
+    it 'returns a single value based on operation defined on block' do
+      array = [1, 2, 3]
+      expect(array.my_inject { |sum, x| sum + x }).to eql(6)
+    end
+
+    it 'returns a single value based on symbol defined on block' do
+      array = [1, 2, 3]
+      expect(array.my_inject(:+)).to eql(6)
+    end
+  end
 end
