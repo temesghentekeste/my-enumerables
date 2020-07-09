@@ -4,6 +4,7 @@ AllCops:
     - "Rakefile"
     - "main.rb"
     - "my_enumerables.rb"
+    - "spec/my_enumerables_spec.rb"
     
   DisplayCopNames: true
 Layout/LineLength:

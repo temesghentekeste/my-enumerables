@@ -280,9 +280,9 @@ require_relative('my_enumerables')
 # p burgers.map
 # p burgers.my_map
 
-hash = { a: 1, b: 2, c: 3 }
-p result = hash.map { |_k, v| v * 10 }
-p result = hash.my_map { |_k, v| v * 10 }
+# hash = { a: 1, b: 2, c: 3 }
+# p result = hash.map { |_k, v| v * 10 }
+# p result = hash.my_map { |_k, v| v * 10 }
 
 # p multiply_els([2,4,5]) #=> 40
 
