@@ -1,5 +1,5 @@
 # Ruby Custom Enumerable Methods
-  
+
 [![View Code](https://img.shields.io/badge/View%20-Code-green)](https://github.com/ElijahTobs/My_Enumerbles/tree/my-enumberables-dev)
 [![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/ElijahTobs/My_Enumerbles/issues)
 [![GitHub Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)](https://github.com/ElijahTobs/My_Enumerbles/pulls)
@@ -63,6 +63,11 @@ This project consist of different ruby enumerable methods that emulate Ruby's in
 - Github: [@temesghentekeste](https://github.com/temesghentekeste)
 - Twitter: [@temesghentekes1](https://twitter.com/temesghentekes1)
 - Linkedin: [temsghen-tekeste-bahta-8b5243193](https://www.linkedin.com/in/temesghen-tekeste-bahta-8b5243193/)
+
+​👤 **Mark James Kiptubei**
+
+- [Github](https://github.com/kiptubei)
+- [Linkedin](https://www.linkedin.com/in/mark-james-k-aa875829/)
 
 ## 🤝 Contributing
 
