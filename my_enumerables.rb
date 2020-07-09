@@ -100,11 +100,11 @@ module Enumerable
   def my_none?(args = nil)
     if args.nil?
       my_each { |value| return false if yield(value) } if block_given?
-      my_each { |value| return false unless value.nil? || value == false }
+      my_each { |value| return false unless value.nil? || value == false } unless block_given?
       true
     else
       my_each { |value| return false if value.match?(args) } if args.is_a? Regexp
-      my_each { |value| return false if value.is_a?(args) } if args.is_a? Module
+      my_each { |value| return false if value.is_a?(args) } if args.is_a? Class
       true
     end
   end

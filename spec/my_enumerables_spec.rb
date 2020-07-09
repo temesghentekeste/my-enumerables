@@ -78,4 +78,19 @@ describe Enumerable do
     end
     
   end
+
+  context '#my_none?' do
+    it 'returns true if no value in given array is true for a of given criteria' do
+      array = (1..10)
+      expect(array.my_none? { |value| value > 10 }).to eql(true)
+    end
+
+    it 'checks regex and returns true if one condition is met' do
+      expect(%w[ant bear cat].my_none?(/c/)).to eql(false)
+    end
+
+    it 'checks class and returns true if no element belongs to that class' do
+      expect([nil, true, 99].my_none?(Array) ).to eql(true)
+    end
+  end
 end
