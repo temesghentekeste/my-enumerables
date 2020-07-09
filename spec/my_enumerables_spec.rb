@@ -93,4 +93,21 @@ describe Enumerable do
       expect([nil, true, 99].my_none?(Array) ).to eql(true)
     end
   end
+
+  context '#my_count' do
+    it 'returns the size of an array if block is not given' do
+      array = (1..10).to_a
+      expect(array.my_count).to eql(10)
+    end
+
+    it 'returns the occurrences of a particular number given as an argument' do
+      array = [0,1,2,2,3,0,0]
+      expect(array.my_count(0)).to eql(3)
+    end
+
+    it 'returns the occurrences of a value whose particular condition is true based on the given block' do
+      array = [0,1,2,2,3,0,0]
+      expect(array.my_count { |value| value.even? }).to eql(5)
+    end
+  end
 end
