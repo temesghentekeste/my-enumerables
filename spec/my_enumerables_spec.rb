@@ -74,9 +74,8 @@ describe Enumerable do
     end
 
     it 'checks class and returns true if one element belongs to that class' do
-      expect([nil, true, 99].my_any?(Numeric) ).to eql(true)
+      expect([nil, true, 99].my_any?(Numeric)).to eql(true)
     end
-    
   end
 
   context '#my_none?' do
@@ -90,7 +89,7 @@ describe Enumerable do
     end
 
     it 'checks class and returns true if no element belongs to that class' do
-      expect([nil, true, 99].my_none?(Array) ).to eql(true)
+      expect([nil, true, 99].my_none?(Array)).to eql(true)
     end
   end
 
@@ -101,13 +100,31 @@ describe Enumerable do
     end
 
     it 'returns the occurrences of a particular number given as an argument' do
-      array = [0,1,2,2,3,0,0]
+      array = [0, 1, 2, 2, 3, 0, 0]
       expect(array.my_count(0)).to eql(3)
     end
 
     it 'returns the occurrences of a value whose particular condition is true based on the given block' do
-      array = [0,1,2,2,3,0,0]
-      expect(array.my_count { |value| value.even? }).to eql(5)
+      array = [0, 1, 2, 2, 3, 0, 0]
+      expect(array.my_count(&:even?)).to eql(5)
+    end
+  end
+
+  context '#my_map' do
+    it 'returns the new array after parsing each member to the block given' do
+      array = [1, 2, 3]
+      expect(array.my_map { |x| x * 2 }).to eql([2, 4, 6])
+    end
+
+    it 'returns the new Hash after parsing each member to the block given' do
+      country_codes_hash = {
+        'kenya' => 254,
+        'uganda' => 256,
+        'eritrea' => 291
+      }
+
+      new_country_codes_array = [255, 257, 292]
+      expect(country_codes_hash.my_map { |_k, v| v += 1 }).to eql(new_country_codes_array)
     end
   end
 end
