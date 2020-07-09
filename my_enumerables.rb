@@ -87,7 +87,7 @@ module Enumerable
       if args[0].is_a?(Regexp)
         my_each { |value| return true if value.match?(args[0]) }
 
-      elsif args[0].is_a?(Module)
+      elsif args[0].is_a?(Class)
         my_each { |value| return true if value.is_a?(args[0]) }
       end
     end

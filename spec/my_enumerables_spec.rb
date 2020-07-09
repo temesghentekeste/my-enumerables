@@ -72,6 +72,10 @@ describe Enumerable do
     it 'checks regex and returns true if one condition is met' do
       expect(%w[ant bear cat].my_any?(/c/)).to eql(true)
     end
+
+    it 'checks class and returns true if one element belongs to that class' do
+      expect([nil, true, 99].my_any?(Numeric) ).to eql(true)
+    end
     
   end
 end
