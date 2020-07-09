@@ -62,4 +62,16 @@ describe Enumerable do
       expect(%w[ant bear cat].my_all?(/a/)).to eql(true)
     end
   end
+
+  context '#my_any?' do
+    it 'returns true if one value in given array is true for a of given criteria' do
+      array = (1..10).to_a
+      expect(array.my_any? { |value| value == 10 }).to eql(true)
+    end
+
+    it 'checks regex and returns true if one condition is met' do
+      expect(%w[ant bear cat].my_any?(/c/)).to eql(true)
+    end
+    
+  end
 end
