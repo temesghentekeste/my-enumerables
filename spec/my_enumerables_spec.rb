@@ -3,10 +3,10 @@
 require './my_enumerables.rb'
 
 describe Enumerable do
-  let(:array) { [1, 2, 3] }
+  let(:array) { [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
   let(:range) { (0..10) }
   let(:country_codes_hash)  { {
-    'keniya' => 254,
+    'kenya' => 254,
     'uganda' => 256,
     'eritrea' => 291
   }}
@@ -49,9 +49,16 @@ describe Enumerable do
   end
 
   context '#my_select' do
+    it 'returns an enumerator if block is not given' do
+      expect(array.my_select).to be_an_instance_of(Enumerator)
+    end
+
     it 'returns the sub-array of given criteria' do
-      array = (1..10).to_a
       expect(array.my_select(&:even?)).to eql([2, 4, 6, 8, 10])
+    end
+
+    it 'returns the original hash once it is done with the block' do
+      expect(country_codes_hash.my_select { |value, index| value.match('kenya') }).to eql({'kenya' => 254})
     end
   end
 
