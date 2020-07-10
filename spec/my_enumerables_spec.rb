@@ -64,18 +64,20 @@ describe Enumerable do
 
   context '#my_all?' do
     it 'returns true if all values in given array are true for a of given criteria' do
-      array = (1..10).to_a
       expect(array.my_all? { |value| value < 11 }).to eql(true)
     end
 
     it 'checks regex and returns true if condition is met' do
       expect(%w[ant bear cat].my_all?(/a/)).to eql(true)
     end
+
+    it 'checks class and returns true if all elements belongs to that class' do
+      expect([0, 101, 99].my_all?(Numeric)).to eql(true)
+    end
   end
 
   context '#my_any?' do
     it 'returns true if one value in given array is true for a of given criteria' do
-      array = (1..10).to_a
       expect(array.my_any? { |value| value == 10 }).to eql(true)
     end
 
