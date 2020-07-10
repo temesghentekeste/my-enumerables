@@ -11,7 +11,7 @@ describe Enumerable do
     'eritrea' => 291
   }}
 
-  context '#my_each' do
+  describe '#my_each' do
 
     it 'returns an enumerator if block is not given' do
       expect(array.my_each).to be_an_instance_of(Enumerator)
@@ -30,7 +30,7 @@ describe Enumerable do
     end
   end
 
-  context '#my_each_with_index' do
+  describe '#my_each_with_index' do
     it 'returns an enumerator if block is not given' do
       expect(array.my_each_with_index).to be_an_instance_of(Enumerator)
     end
@@ -48,7 +48,7 @@ describe Enumerable do
     end
   end
 
-  context '#my_select' do
+  describe '#my_select' do
     it 'returns an enumerator if block is not given' do
       expect(array.my_select).to be_an_instance_of(Enumerator)
     end
@@ -62,7 +62,7 @@ describe Enumerable do
     end
   end
 
-  context '#my_all?' do
+  describe '#my_all?' do
     it 'returns true if all values in given array are true for a of given criteria' do
       expect(array.my_all? { |value| value < 11 }).to eql(true)
     end
@@ -74,13 +74,13 @@ describe Enumerable do
     it 'checks class and returns true if all elements belongs to that class' do
       expect([0, 101, 99].my_all?(Numeric)).to eql(true)
     end
-    
+
     it 'returns false if one of the elements fails to meet the criteria inside a block' do
       expect(%w[ant bear cat].my_all? { |word| word.length >= 4 }).to eql(false)
     end
   end
 
-  context '#my_any?' do
+  describe '#my_any?' do
     it 'returns true if block is not given and any elements of the array has truthy value' do
       expect(array.my_any?).to eql(true)
     end
@@ -106,7 +106,7 @@ describe Enumerable do
     end
   end
 
-  context '#my_none?' do
+  describe '#my_none?' do
     it 'returns true if no value in given array is true for a of given criteria' do
       array = (1..10)
       expect(array.my_none? { |value| value > 10 }).to eql(true)
@@ -129,9 +129,9 @@ describe Enumerable do
     end
   end
 
-  context '#my_count' do
+  describe '#my_count' do
     it 'returns the size of an array if block is not given' do
-    
+
       expect(array.my_count).to eql(10)
     end
 
@@ -144,7 +144,7 @@ describe Enumerable do
     end
   end
 
-  context '#my_map' do
+  describe '#my_map' do
     it 'returns the new array after parsing each member to the block given' do
       array = [1, 2, 3]
       expect(array.my_map { |x| x * 2 }).to eql([2, 4, 6])
@@ -162,7 +162,7 @@ describe Enumerable do
     end
   end
 
-  context '#my_inject' do
+  describe '#my_inject' do
     it 'returns a single value based on operation defined on block' do
       array = [1, 2, 3]
       expect(array.my_inject { |sum, x| sum + x }).to eql(6)
