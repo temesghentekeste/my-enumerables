@@ -140,7 +140,7 @@ module Enumerable
     else
       enum_for(:my_map)
     end
-   end
+  end
 
   # ---------------------------------------------
   # MY INJECT
