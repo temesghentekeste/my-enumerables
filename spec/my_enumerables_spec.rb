@@ -74,9 +74,25 @@ describe Enumerable do
     it 'checks class and returns true if all elements belongs to that class' do
       expect([0, 101, 99].my_all?(Numeric)).to eql(true)
     end
+    
+    it 'returns false if one of the elements fails to meet the criteria inside a block' do
+      expect(%w[ant bear cat].my_all? { |word| word.length >= 4 }).to eql(false)
+    end
   end
 
   context '#my_any?' do
+    it 'returns true if block is not given and any elements of the array has truthy value' do
+      expect(array.my_any?).to eql(true)
+    end
+
+    it 'returns false if block is not given and all elements of the array has falsy value' do
+      expect([false, nil, nil].my_any?).to eql(false)
+    end
+
+    it 'returns false if block is not given and the array is empty' do
+      expect([].my_any?).to eql(false)
+    end
+
     it 'returns true if one value in given array is true for a of given criteria' do
       expect(array.my_any? { |value| value == 10 }).to eql(true)
     end
