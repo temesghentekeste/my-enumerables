@@ -103,21 +103,27 @@ describe Enumerable do
     it 'checks class and returns true if no element belongs to that class' do
       expect([nil, true, 99].my_none?(Array)).to eql(true)
     end
+
+    it 'returns true if it is given an empty array without any block' do
+      expect([].my_none?).to eql(true)
+    end
+
+    it 'returns false for an array having a truthy value and passing no block' do
+      expect([nil, false, 10].my_none?).to eql(false)
+    end
   end
 
   context '#my_count' do
     it 'returns the size of an array if block is not given' do
-      array = (1..10).to_a
+    
       expect(array.my_count).to eql(10)
     end
 
     it 'returns the occurrences of a particular number given as an argument' do
-      array = [0, 1, 2, 2, 3, 0, 0]
-      expect(array.my_count(0)).to eql(3)
+      expect(array.my_count(0)).to eql(0)
     end
 
     it 'returns the occurrences of a value whose particular condition is true based on the given block' do
-      array = [0, 1, 2, 2, 3, 0, 0]
       expect(array.my_count(&:even?)).to eql(5)
     end
   end
