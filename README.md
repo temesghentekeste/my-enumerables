@@ -53,7 +53,7 @@ The project has also been enhanced by adding Rspec tests to check each and every
 
 - run npm install to install the dependencies for the project.
 
-## 🔨 Testing Game Logic
+## 🔨 Testing
 
 To run the tests described for each method:
 - change directory to the root of the project (cd into the project folder)
