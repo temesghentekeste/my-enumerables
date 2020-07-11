@@ -1,5 +1,5 @@
 # Ruby Custom Enumerable Methods
-  
+
 [![View Code](https://img.shields.io/badge/View%20-Code-green)](https://github.com/ElijahTobs/My_Enumerbles/tree/my-enumberables-dev)
 [![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/ElijahTobs/My_Enumerbles/issues)
 [![GitHub Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)](https://github.com/ElijahTobs/My_Enumerbles/pulls)
@@ -17,6 +17,8 @@
 This project is a microverse collaborative project which is part of the requirements of the microverse technical curriculum in the Ruby section.
 This project consist of different ruby enumerable methods that emulate Ruby's in-built enumerable methods
 
+The project has also been enhanced by adding Rspec tests to check each and every method written works as it was intended
+
 <h3>Methods <a name = "method"></a></h3>
 <h4>The custom methods created are listed below:</h4>
 <li>my_each</li>
@@ -31,7 +33,8 @@ This project consist of different ruby enumerable methods that emulate Ruby's in
 
 ## 🔧 Built with<a name = "with"></a>
 
-- Ruby
+- Ruby 2.7.X
+- Rspec
 
 
 ## 🔴 Live Demo <a name = "ldl"></a>
@@ -50,6 +53,26 @@ This project consist of different ruby enumerable methods that emulate Ruby's in
 
 - run npm install to install the dependencies for the project.
 
+## 🔨 Testing
+
+To run the tests described for each method:
+- change directory to the root of the project (cd into the project folder)
+- from terminal run the command `rspec`
+- to run a specific test `rspec ./spec/my_enumerables_spec.rb:104` (here 104 is the line number of the method)
+- result should be similar to:
+<h4>Enumerable</h4>
+<h4>#my_each</h4>
+  <li>returns an enumerator if block is not given.</li>
+  <li>returns the original array once it is done with the block.</li>
+  <li>returns the original range once it is done with the block.</li>
+  <li>returns the original hash once it is done with the block.</li>
+<h4>#my_each_with_index</h4>
+  <li>returns an enumerator if block is not given</li>
+  <li>returns the original array once it is done with the block</li>
+  <li>returns the original range once it is done with the block</li>
+  <li>returns the original hash once it is done with the block</li>
+
+
 ## ✒️  Author <a name = "author"></a>
 
 👤 **Elijah Ayandokun**
@@ -63,6 +86,11 @@ This project consist of different ruby enumerable methods that emulate Ruby's in
 - Github: [@temesghentekeste](https://github.com/temesghentekeste)
 - Twitter: [@temesghentekes1](https://twitter.com/temesghentekes1)
 - Linkedin: [temsghen-tekeste-bahta-8b5243193](https://www.linkedin.com/in/temesghen-tekeste-bahta-8b5243193/)
+
+​👤 **Mark James Kiptubei**
+
+- [Github](https://github.com/kiptubei)
+- [Linkedin](https://www.linkedin.com/in/mark-james-k-aa875829/)
 
 ## 🤝 Contributing
 

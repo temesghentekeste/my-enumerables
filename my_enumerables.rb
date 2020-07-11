@@ -87,7 +87,7 @@ module Enumerable
       if args[0].is_a?(Regexp)
         my_each { |value| return true if value.match?(args[0]) }
 
-      elsif args[0].is_a?(Module)
+      elsif args[0].is_a?(Class)
         my_each { |value| return true if value.is_a?(args[0]) }
       end
     end
@@ -100,11 +100,11 @@ module Enumerable
   def my_none?(args = nil)
     if args.nil?
       my_each { |value| return false if yield(value) } if block_given?
-      my_each { |value| return false unless value.nil? || value == false }
+      my_each { |value| return false unless value.nil? || value == false } unless block_given?
       true
     else
       my_each { |value| return false if value.match?(args) } if args.is_a? Regexp
-      my_each { |value| return false if value.is_a?(args) } if args.is_a? Module
+      my_each { |value| return false if value.is_a?(args) } if args.is_a? Class
       true
     end
   end
@@ -140,7 +140,7 @@ module Enumerable
     else
       enum_for(:my_map)
     end
-   end
+  end
 
   # ---------------------------------------------
   # MY INJECT
@@ -171,4 +171,3 @@ end
 def multiply_els(arr)
   arr.my_inject(:*)
 end
-
